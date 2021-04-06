@@ -1,0 +1,24 @@
+{
+  "name": "notesier",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt-ts",
+    "build": "nuxt-ts build",
+    "start": "nuxt-ts start",
+    "generate": "nuxt-ts generate"
+  },
+  "dependencies": {
+    "@nuxt/typescript-runtime": "^2.0.0",
+    "core-js": "^3.6.5",
+    "material-design-icons": "^3.0.1",
+    "nuxt": "^2.14.6",
+    "vuex": "^3.6.2"
+  },
+  "devDependencies": {
+    "@nuxt/types": "^2.14.6",
+    "@nuxt/typescript-build": "^2.0.3",
+    "sass": "^1.32.5",
+    "sass-loader": "^10.1.1"
+  }
+}
