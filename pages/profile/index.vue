@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
 import ProfileDataItem from "../../components/Pages/Profile/ProfileDataItem/ProfileDataItem";
+import { mapGetters } from "vuex";
 
 /*====================*/
 
@@ -25,7 +25,13 @@ export default {
     })
   },
 
-  beforeUpdate() {}
+  watch: {
+    user() {
+      if (!this.user) {
+        this.$router.push("/login");
+      }
+    }
+  }
 };
 </script>
 

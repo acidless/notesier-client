@@ -79,4 +79,12 @@ export default {
     }
   }
 }
+
+@media screen and (max-width: 400px) {
+  .main-block {
+    &__left h1{
+      text-align: center;
+    }
+  }
+}
 </style>

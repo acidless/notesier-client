@@ -61,6 +61,8 @@ const actions = {
 
     if (handleResponse(response)) {
       commit("setUser", response.data);
+    } else {
+      commit("setUser", undefined);
     }
   }
 };
