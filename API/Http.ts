@@ -5,18 +5,18 @@ class Http {
     this.basePath = _basePath;
   }
 
-  public async request(method: string, url: string, body?: object) {
-    return (
-      await fetch(this.basePath + url, {
-        credentials: "include",
-        mode: "cors",
-        method,
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(body)
-      })
-    ).json();
+  public async request(method: string, url: string, body?: object, json = true) {
+    const data = await fetch(this.basePath + url, {
+      credentials: "include",
+      mode: "cors",
+      method,
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(body)
+    });
+
+    return json ? data.json() : data;
   }
 }
 

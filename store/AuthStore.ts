@@ -64,6 +64,12 @@ const actions = {
     } else {
       commit("setUser", undefined);
     }
+  },
+
+  async logout({ commit }: ActionContext<any, any>) {
+    await AuthAPI.logout();
+
+    commit("setUser", undefined);
   }
 };
 

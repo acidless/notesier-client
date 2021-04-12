@@ -7,24 +7,26 @@
         <ProfileDataItem key-icon="lock" data-key="Пароль" data-value="*********" />
       </div>
     </div>
+
+    <ProfileLogout />
   </div>
 </template>
 
 <script>
 import ProfileDataItem from "../../components/Pages/Profile/ProfileDataItem/ProfileDataItem";
 import { mapGetters } from "vuex";
+import ProfileLogout from "@/components/Pages/Profile/ProfileLogout/ProfileLogout";
 
 /*====================*/
 
 export default {
   name: "Profile",
-  components: { ProfileDataItem },
+  components: { ProfileLogout, ProfileDataItem },
   computed: {
     ...mapGetters({
       user: "getUser"
     })
   },
-
   watch: {
     user() {
       if (!this.user) {

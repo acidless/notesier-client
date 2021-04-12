@@ -17,6 +17,10 @@ const AuthAPI = {
 
   async auth(): Promise<IResponse<IUser>> {
     return Http.request("POST", "auth");
+  },
+
+  async logout(): Promise<void> {
+    return Http.request("POST", "logout", undefined, false);
   }
 };
 
