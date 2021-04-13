@@ -32,7 +32,7 @@ const mutations = {
 /*====================*/
 
 const actions = {
-  async login({ commit }: ActionContext<any, any>, data: LoginViewModel) {
+  async login({ commit }: ActionContext<AuthStateType, any>, data: LoginViewModel) {
     await withLoading(commit, async () => {
       const response = await AuthAPI.login(data);
 
@@ -44,7 +44,7 @@ const actions = {
     });
   },
 
-  async register({ commit }: ActionContext<any, any>, data: RegisterViewModel) {
+  async register({ commit }: ActionContext<AuthStateType, any>, data: RegisterViewModel) {
     await withLoading(commit, async () => {
       const response = await AuthAPI.register(data);
 
@@ -56,7 +56,7 @@ const actions = {
     });
   },
 
-  async auth({ commit }: ActionContext<any, any>) {
+  async auth({ commit }: ActionContext<AuthStateType, any>) {
     const response = await AuthAPI.auth();
 
     if (handleResponse(response)) {
@@ -66,7 +66,7 @@ const actions = {
     }
   },
 
-  async logout({ commit }: ActionContext<any, any>) {
+  async logout({ commit }: ActionContext<AuthStateType, any>) {
     await AuthAPI.logout();
 
     commit("setUser", undefined);

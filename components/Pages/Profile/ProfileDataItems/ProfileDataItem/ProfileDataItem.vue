@@ -10,22 +10,44 @@
     </div>
     <div class="flex-container align-items-center profile-data-item__value">
       <p>{{ dataValue }}</p>
-      <button class="default-btn profile-data-item__edit animated-icon">
+      <button @click="isEditMode = true" class="default-btn profile-data-item__edit animated-icon">
         <span class="material-icons">
           create
         </span>
       </button>
     </div>
+    <ProfileDataItemForm :on-submit="onSave" :set-active="setEditMode" :is-active="isEditMode">
+      <slot name="content" slot="content"></slot>
+    </ProfileDataItemForm>
   </div>
 </template>
 
 <script>
+/*====================*/
+
+import MessageWindow from "@/components/Common/MessageWindow/MessageWindow";
+import ProfileDataItemForm from "@/components/Pages/Profile/ProfileDataItems/ProfileDataItem/ProfileDataItemForm/ProfileDataItemForm";
+
+/*====================*/
+
 export default {
   name: "ProfileDataItem",
+  components: { ProfileDataItemForm, MessageWindow },
   props: {
     keyIcon: String,
     dataKey: String,
-    dataValue: String
+    dataValue: String,
+    onSave: Function
+  },
+  data() {
+    return {
+      isEditMode: false
+    };
+  },
+  methods: {
+    setEditMode(value) {
+      this.$data.isEditMode = value;
+    }
   }
 };
 </script>

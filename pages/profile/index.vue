@@ -1,31 +1,40 @@
 <template>
-  <div class="profile container">
-    <div class="block">
-      <h3 class="block__title">Данные аккаунта</h3>
-      <div class="profile__data">
-        <ProfileDataItem key-icon="account_circle" data-key="Логин" :data-value="user ? user.name : ''" />
-        <ProfileDataItem key-icon="lock" data-key="Пароль" data-value="*********" />
+  <div class="full-size-block">
+    <div class="profile container ">
+      <div class="block">
+        <h3 class="block__title">Данные аккаунта</h3>
+        <div class="profile__data">
+          <EditName :on-save="onFieldSave" :user="user" />
+          <EditPassword :on-save="onFieldSave" />
+        </div>
       </div>
-    </div>
 
-    <ProfileLogout />
+      <ProfileLogout />
+    </div>
   </div>
 </template>
 
 <script>
-import ProfileDataItem from "../../components/Pages/Profile/ProfileDataItem/ProfileDataItem";
+import ProfileDataItem from "../../components/Pages/Profile/ProfileDataItems/ProfileDataItem/ProfileDataItem";
 import { mapGetters } from "vuex";
 import ProfileLogout from "@/components/Pages/Profile/ProfileLogout/ProfileLogout";
+import EditName from "@/components/Pages/Profile/ProfileDataItems/EditName/EditName";
+import EditPassword from "@/components/Pages/Profile/ProfileDataItems/EditPassword/EditPassword";
 
 /*====================*/
 
 export default {
   name: "Profile",
-  components: { ProfileLogout, ProfileDataItem },
+  components: { EditPassword, EditName, ProfileLogout, ProfileDataItem },
   computed: {
     ...mapGetters({
       user: "getUser"
     })
+  },
+  methods: {
+    onFieldSave(data) {
+      this.$store.dispatch("updateUser", data);
+    }
   },
   watch: {
     user() {
